@@ -78,8 +78,8 @@ GameObject:
   - 4: {fileID: 432184}
   - 33: {fileID: 3367672}
   - 65: {fileID: 6581496}
-  - 23: {fileID: 2342990}
   - 54: {fileID: 5481290}
+  - 23: {fileID: 2342990}
   m_Layer: 0
   m_Name: Short Floor
   m_TagString: Untagged
