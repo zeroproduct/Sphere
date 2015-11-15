@@ -10,10 +10,9 @@ public class Paddle : MonoBehaviour {
 	public Rigidbody rb;
 	public Camera camera;
 	public bool isGrounded;
-	public float boost = 3F;
-	public float extraTime = 3F;
 	private float timer = 0;
 	public float airSpeed = 1000f;
+	public int checkpoint = 0;
 	void Start(){
 		rb = GetComponent <Rigidbody> ();
 		
@@ -30,6 +29,7 @@ public class Paddle : MonoBehaviour {
 
 		Vector3 movement = new Vector3(0, 0.0f, moveVertical);
 		movement = Camera.main.transform.TransformDirection (movement);
+		movement.y = 0;
 		if (isGrounded == true) {
 			rb.AddForce (movement * speed * Time.deltaTime);
 		} 
@@ -41,15 +41,19 @@ public class Paddle : MonoBehaviour {
 			rb.AddForce (jumping);
 
 		}
-		if(transform.position.y <-10)
-		{
-			transform.position = new Vector3(0,2,0);
+		if (transform.position.y < -10 && checkpoint == 0) {
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3 (1.736405f, 3.638f, -3.824f);
+		} else if (transform.position.y < -15 && checkpoint == 1) {
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3 (3.28f, -2.27f, 37.75f);
 		}
 	}
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag == "Cube") {
+		if (other.gameObject.tag == "Checkpoint") {
 			other.gameObject.SetActive (false);
+			checkpoint++;
 		}
 	}
 	void OnCollisionEnter (Collision collisionInfo)
