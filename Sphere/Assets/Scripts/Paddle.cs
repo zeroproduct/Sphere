@@ -28,7 +28,7 @@ public class Paddle : MonoBehaviour {
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
 
-		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+		Vector3 movement = new Vector3(0, 0.0f, moveVertical);
 		movement = Camera.main.transform.TransformDirection (movement);
 		if (isGrounded == true) {
 			rb.AddForce (movement * speed * Time.deltaTime);
@@ -54,7 +54,7 @@ public class Paddle : MonoBehaviour {
 	}
 	void OnCollisionEnter (Collision collisionInfo)
 	{
-		isGrounded = true;
+			isGrounded = true;
 	}
 	void OnCollisionStay (Collision collisionInfo)
 	{
