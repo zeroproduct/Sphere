@@ -13,6 +13,7 @@ public class Paddle : MonoBehaviour {
 	private float timer = 0;
 	public float airSpeed = 1000f;
 	public int checkpoint = 0;
+	public int checkpoint2 = 0;
 	void Start(){
 		rb = GetComponent <Rigidbody> ();
 		
@@ -41,23 +42,73 @@ public class Paddle : MonoBehaviour {
 			rb.AddForce (jumping);
 
 		}
-		if (transform.position.y < -10 && checkpoint == 0) {
+		if (transform.position.y < -10 && checkpoint == 0 && checkpoint2 ==0)
+		{
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (1.736405f, 3.638f, -3.824f);
-		} else if (transform.position.y < -15 && checkpoint == 1) {
+		} 
+		else if (transform.position.y < -10 && checkpoint == 1) 
+		{
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (3.28f, -2.27f, 37.75f);
 		}
+		else if (transform.position.y < -10 && checkpoint == 2)
+		{
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3 (13.05f, 2.27f, 58f);
+		}
+		else if (transform.position.y < -10 && checkpoint == 3)
+		{
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3 (25.39f, 2.22f, 75.41f);
+		}
+		else if (transform.position.y < -10 && checkpoint == 4)
+		{
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3 (32.92f, -7.63f, 104f);
+		}
+		else if (transform.position.y < -10 && checkpoint2 == 1)
+		{
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3 (28.4F, 15f, .5f);
+		} 
+		else if (transform.position.y < -10 && checkpoint2 == 2)
+		{
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3 (-12.85F, 15f, -28.82f);
+		} 
+		else if(transform.position.y < -10 && checkpoint2 == 3)
+		{
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3 (28.4F, 15f, -39.1f);
+		} 
 	}
+
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Checkpoint") {
 			other.gameObject.SetActive (false);
 			checkpoint++;
 		}
+		if (other.gameObject.tag == "Checkpoint2")
+		{
+			other.gameObject.SetActive(false);
+			checkpoint2++;
+		}
 	}
 	void OnCollisionEnter (Collision collisionInfo)
 	{
+		if (collisionInfo.gameObject.tag == "Trap") {
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3 (13.05f, 2.27f, 58f);
+		} else if (collisionInfo.gameObject.tag == "Trap2") {
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3 (-12.85F, 15f, -28.82f);
+		} 
+		else if (collisionInfo.gameObject.tag == "Trap3") {
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3 (28.4F, 15f, -39.1f);
+		} 
 			isGrounded = true;
 	}
 	void OnCollisionStay (Collision collisionInfo)
