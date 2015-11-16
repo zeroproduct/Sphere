@@ -14,9 +14,13 @@ public class Paddle : MonoBehaviour {
 	public float airSpeed = 1000f;
 	public int checkpoint = 0;
 	public int checkpoint2 = 0;
+	public AudioClip jumpingsound;
+	private AudioSource source;
+	public AudioClip checkpointsound;
 	void Start(){
 		rb = GetComponent <Rigidbody> ();
-		
+		source = GetComponent<AudioSource>();
+
 	}
 	void update ()
 	{
@@ -37,9 +41,13 @@ public class Paddle : MonoBehaviour {
 		else if (isGrounded == false) {
 			rb.AddForce (movement * airSpeed * Time.deltaTime);
 		}
-			if (Input.GetButton ("Jump")&& isGrounded==true) {
+			if (Input.GetButton ("Jump")&& isGrounded==true)
+		  {
 			Vector3 jumping = new Vector3 (0, jumpSpeed, 0);
+
 			rb.AddForce (jumping);
+			source.PlayOneShot(jumpingsound,1F);
+
 
 		}
 		if (transform.position.y < -10 && checkpoint == 0 && checkpoint2 ==0)
@@ -89,11 +97,14 @@ public class Paddle : MonoBehaviour {
 		if (other.gameObject.tag == "Checkpoint") {
 			other.gameObject.SetActive (false);
 			checkpoint++;
+			source.PlayOneShot(checkpointsound,1F);
+
 		}
 		if (other.gameObject.tag == "Checkpoint2")
 		{
 			other.gameObject.SetActive(false);
 			checkpoint2++;
+			source.PlayOneShot(checkpointsound,1F);
 		}
 	}
 	void OnCollisionEnter (Collision collisionInfo)
