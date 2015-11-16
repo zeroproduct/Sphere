@@ -124,15 +124,23 @@ public class Paddle : MonoBehaviour {
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (28.4F, 15f, -39.1f);
 		} 
+		if (collisionInfo.gameObject.tag == "Ground") {
 			isGrounded = true;
+		}
 	}
 	void OnCollisionStay (Collision collisionInfo)
 	{
-		isGrounded = true;
+		if (collisionInfo.gameObject.tag == "Ground") {
+
+			isGrounded = true;
+		}
 	}
 	void OnCollisionExit (Collision collisionInfo)
 	{
-		isGrounded = false;
+		if (collisionInfo.gameObject.tag == "Ground") {
+			
+			isGrounded = false;
+		}
 	}
 }
 
