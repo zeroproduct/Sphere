@@ -17,6 +17,7 @@ public class Paddle : MonoBehaviour {
 	public AudioClip jumpingsound;
 	private AudioSource source;
 	public AudioClip checkpointsound;
+	public AudioClip metalbang;
 	void Start(){
 		rb = GetComponent <Rigidbody> ();
 		source = GetComponent<AudioSource>();
@@ -110,13 +111,16 @@ public class Paddle : MonoBehaviour {
 	void OnCollisionEnter (Collision collisionInfo)
 	{
 		if (collisionInfo.gameObject.tag == "Trap") {
+			source.PlayOneShot(metalbang, 1F);
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (13.05f, 2.27f, 58f);
 		} else if (collisionInfo.gameObject.tag == "Trap2") {
+			source.PlayOneShot(metalbang, 1F);
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (-12.85F, 15f, -28.82f);
 		} 
 		else if (collisionInfo.gameObject.tag == "Trap3") {
+			source.PlayOneShot(metalbang, 1F);
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (28.4F, 15f, -39.1f);
 		} 
