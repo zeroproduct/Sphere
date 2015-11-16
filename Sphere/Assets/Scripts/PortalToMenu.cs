@@ -2,15 +2,18 @@
 using System.Collections;
 
 public class PortalToMenu : MonoBehaviour {
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	}
 
 	//chances scene on collision
-	void OnTriggerEnter(Collider other)
-	{
-		if(other.gameObject.tag == "Player")
-		{
-			Application.LoadLevel ("GameOver");
-
-		}
-	
+	void OnTriggerEnter() {
+		Application.LoadLevel ("GameOver");
 	}
 }
+

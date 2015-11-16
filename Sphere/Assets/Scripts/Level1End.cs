@@ -14,6 +14,6 @@ public class Level1End : MonoBehaviour {
 	}
 
 	void OnTriggerEnter() {
-		Application.LoadLevel ("Level 2");
+		Application.LoadLevel ("Level_2");
 	}
 }

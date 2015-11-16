@@ -18,6 +18,8 @@ public class Paddle : MonoBehaviour {
 	private AudioSource source;
 	public AudioClip checkpointsound;
 	public AudioClip metalbang;
+	public AudioClip lootsound;
+
 	void Start(){
 		rb = GetComponent <Rigidbody> ();
 		source = GetComponent<AudioSource>();
@@ -108,19 +110,23 @@ public class Paddle : MonoBehaviour {
 	void OnCollisionEnter (Collision collisionInfo)
 	{
 		if (collisionInfo.gameObject.tag == "Trap") {
-			source.PlayOneShot(metalbang, 1F);
+			source.PlayOneShot (metalbang, 1F);
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (13.05f, 2.27f, 58f);
 		} else if (collisionInfo.gameObject.tag == "Trap2") {
-			source.PlayOneShot(metalbang, 1F);
+			source.PlayOneShot (metalbang, 1F);
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (-12.85F, 15f, -28.82f);
-		} 
-		else if (collisionInfo.gameObject.tag == "Trap3") {
-			source.PlayOneShot(metalbang, 1F);
+		} else if (collisionInfo.gameObject.tag == "Trap3") {
+			source.PlayOneShot (metalbang, 1F);
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (28.4F, 15f, -39.1f);
-		} 
+		}
+		if (collisionInfo.gameObject.tag == "Key") {
+			source.PlayOneShot(lootsound, 1F);
+		}
+	
+
 		if (collisionInfo.gameObject.tag == "Ground") {
 			isGrounded = true;
 		}
