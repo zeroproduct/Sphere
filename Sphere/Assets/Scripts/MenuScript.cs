@@ -25,7 +25,7 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void StartLevel() {
-		Application.LoadLevel (1);
+		Application.LoadLevel ("LevelSelect");
 	}
 
 	public void ExitGame() {
