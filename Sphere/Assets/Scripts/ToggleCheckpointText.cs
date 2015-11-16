@@ -7,6 +7,5 @@ public class ToggleCheckpointText : MonoBehaviour {
 	bool showWindow;
 
 	void OnTriggerEnter(Collider c){
-		if
 	}
 }
