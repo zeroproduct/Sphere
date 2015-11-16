@@ -2,22 +2,22 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class MenuScript : MonoBehaviour {
-
-	public Button startText;
+public class GameOverMenuScript : MonoBehaviour {
+	
+	public Button menuText;
 	public Button exitText;
 	
 	void Start () {
-		startText = startText.GetComponent<Button> ();
+		menuText = menuText.GetComponent<Button> ();
 		exitText = exitText.GetComponent<Button> ();
 	}
-
-	public void StartLevel() {
-		Application.LoadLevel ("LevelSelect");
+	
+	public void goToMenu() {
+		Application.LoadLevel ("Menu");
 	}
-
+	
 	public void ExitGame() {
 		Application.Quit ();
 	}
-
+	
 }

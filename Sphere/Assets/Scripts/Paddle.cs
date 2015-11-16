@@ -21,11 +21,9 @@ public class Paddle : MonoBehaviour {
 	void Start(){
 		rb = GetComponent <Rigidbody> ();
 		source = GetComponent<AudioSource>();
-
 	}
 	void update ()
 	{
-
 	}
 
 
@@ -54,7 +52,7 @@ public class Paddle : MonoBehaviour {
 		if (transform.position.y < -10 && checkpoint == 0 && checkpoint2 ==0)
 		{
 			rb.velocity = Vector3.zero;
-			transform.position = new Vector3 (1.736405f, 3.638f, -3.824f);
+			transform.position = new Vector3 (1.694f, 4.612f, -4.221f);
 		} 
 		else if (transform.position.y < -10 && checkpoint == 1) 
 		{
@@ -99,7 +97,6 @@ public class Paddle : MonoBehaviour {
 			other.gameObject.SetActive (false);
 			checkpoint++;
 			source.PlayOneShot(checkpointsound,1F);
-
 		}
 		if (other.gameObject.tag == "Checkpoint2")
 		{
