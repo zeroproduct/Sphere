@@ -18,10 +18,9 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		spawnPosition = new Vector3 (Random.Range (-130.0F, 130.0F), Random.Range (-80.0F, 80.0F), 130.0F);
-
-		spherePrefabClone = (GameObject)Instantiate (SpherePrefab, spawnPosition, SpherePrefab.transform.rotation);
-		Destroy (spherePrefabClone, 0.5F);
+		//spawnPosition = new Vector3 (Random.Range (-130.0F, 130.0F), Random.Range (-80.0F, 80.0F), 130.0F);
+		//spherePrefabClone = (GameObject)Instantiate (SpherePrefab, spawnPosition, SpherePrefab.transform.rotation);
+		//Destroy (spherePrefabClone, 0.5F);
 	}
 
 	public void StartLevel() {

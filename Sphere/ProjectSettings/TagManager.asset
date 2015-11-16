@@ -11,6 +11,7 @@ TagManager:
   - Checkpoint2
   - Trap2
   - Trap3
+  - Music
   layers:
   - Default
   - TransparentFX
