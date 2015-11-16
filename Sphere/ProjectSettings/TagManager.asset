@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - Checkpoint
   - Trap
+  - Door
+  - Checkpoint2
+  - Trap2
+  - Trap3
   layers:
   - Default
   - TransparentFX
