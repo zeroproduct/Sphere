@@ -17,14 +17,15 @@ public class Paddle : MonoBehaviour {
 	public AudioClip jumpingsound;
 	private AudioSource source;
 	public AudioClip checkpointsound;
+	public AudioClip metalbang;
+	public AudioClip lootsound;
+
 	void Start(){
 		rb = GetComponent <Rigidbody> ();
 		source = GetComponent<AudioSource>();
-
 	}
 	void update ()
 	{
-
 	}
 
 
@@ -53,7 +54,7 @@ public class Paddle : MonoBehaviour {
 		if (transform.position.y < -10 && checkpoint == 0 && checkpoint2 ==0)
 		{
 			rb.velocity = Vector3.zero;
-			transform.position = new Vector3 (1.736405f, 3.638f, -3.824f);
+			transform.position = new Vector3 (1.694f, 4.612f, -4.221f);
 		} 
 		else if (transform.position.y < -10 && checkpoint == 1) 
 		{
@@ -98,7 +99,6 @@ public class Paddle : MonoBehaviour {
 			other.gameObject.SetActive (false);
 			checkpoint++;
 			source.PlayOneShot(checkpointsound,1F);
-
 		}
 		if (other.gameObject.tag == "Checkpoint2")
 		{
@@ -110,25 +110,40 @@ public class Paddle : MonoBehaviour {
 	void OnCollisionEnter (Collision collisionInfo)
 	{
 		if (collisionInfo.gameObject.tag == "Trap") {
+			source.PlayOneShot (metalbang, 1F);
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (13.05f, 2.27f, 58f);
 		} else if (collisionInfo.gameObject.tag == "Trap2") {
+			source.PlayOneShot (metalbang, 1F);
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (-12.85F, 15f, -28.82f);
-		} 
-		else if (collisionInfo.gameObject.tag == "Trap3") {
+		} else if (collisionInfo.gameObject.tag == "Trap3") {
+			source.PlayOneShot (metalbang, 1F);
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3 (28.4F, 15f, -39.1f);
-		} 
+		}
+		if (collisionInfo.gameObject.tag == "Key") {
+			source.PlayOneShot(lootsound, 1F);
+		}
+	
+
+		if (collisionInfo.gameObject.tag == "Ground") {
 			isGrounded = true;
+		}
 	}
 	void OnCollisionStay (Collision collisionInfo)
 	{
-		isGrounded = true;
+		if (collisionInfo.gameObject.tag == "Ground") {
+
+			isGrounded = true;
+		}
 	}
 	void OnCollisionExit (Collision collisionInfo)
 	{
-		isGrounded = false;
+		if (collisionInfo.gameObject.tag == "Ground") {
+			
+			isGrounded = false;
+		}
 	}
 }
 
