@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Ground
   - Checkpoint
+  - Trap
+  - Door
+  - Checkpoint2
+  - Trap2
+  - Trap3
+  - Music
+  - Key
   layers:
   - Default
   - TransparentFX
