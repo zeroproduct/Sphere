@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof (GunController))]
 public class Paddle : MonoBehaviour {
 
 	private Vector3 pos = new Vector3 (5,-1,2);
@@ -20,51 +21,56 @@ public class Paddle : MonoBehaviour {
 	public AudioClip metalbang;
 	public AudioClip lootsound;
 
+	//Arena Shooter
+	GunController gunShooter;
+
 	void Start(){
 		rb = GetComponent <Rigidbody> ();
 		source = GetComponent<AudioSource>();
+		gunShooter = GetComponent<GunController> ();
+		//Screen.lockCursor = true;
 	}
-	void update ()
+
+	void Update ()
 	{
+		if(Input.GetMouseButton(0)){
+			gunShooter.Shoot();
+		}
 	}
 
 
 	void FixedUpdate() {
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
-
-		Vector3 movement = new Vector3(0, 0.0f, moveVertical);
+		
+		Vector3 movement = new Vector3 (moveHorizontal, 0f, moveVertical);
 		movement = Camera.main.transform.TransformDirection (movement);
 		movement.y = 0;
+		//movement *= (Mathf.Abs (movement.x) == 1 && Mathf.Abs (movement.z) == 1) ? .7f : 1;
+
 		if (isGrounded == true) {
-			rb.AddForce (movement * speed * Time.deltaTime);
-		} 
-		else if (isGrounded == false) {
+			rb.velocity = (movement * speed * Time.deltaTime);
+		} else if (isGrounded == false) {
 			rb.AddForce (movement * airSpeed * Time.deltaTime);
 		}
-			if (Input.GetButton ("Jump")&& isGrounded==true)
-		  {
+		if (Input.GetButton ("Jump") && isGrounded == true) {
 			Vector3 jumping = new Vector3 (0, jumpSpeed, 0);
-
 			rb.AddForce (jumping);
-			source.PlayOneShot(jumpingsound,1F);
-
-
+			
 		}
-		if (transform.position.y < -10 && checkpoint == 0 && checkpoint2 ==0)
-		{
+		if (transform.position.y < -10 && checkpoint == 0) {
 			rb.velocity = Vector3.zero;
-			transform.position = new Vector3 (1.694f, 4.612f, -4.221f);
-		} 
-		else if (transform.position.y < -10 && checkpoint == 1) 
-		{
-			rb.velocity = Vector3.zero;
-			transform.position = new Vector3 (3.28f, -2.27f, 37.75f);
+			transform.position = new Vector3 (0, 2, 0);
 		}
-		else if (transform.position.y < -10 && checkpoint == 2)
+		else if(transform.position.y <-10 && checkpoint == 1)
 		{
 			rb.velocity = Vector3.zero;
-			transform.position = new Vector3 (13.05f, 2.27f, 58f);
+			transform.position = new Vector3(0,2,26);
+		}
+		else if(transform.position.y <-10 && checkpoint == 2)
+		{
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3(0,2,38);
 		}
 		else if (transform.position.y < -10 && checkpoint == 3)
 		{
@@ -105,6 +111,24 @@ public class Paddle : MonoBehaviour {
 			other.gameObject.SetActive(false);
 			checkpoint2++;
 			source.PlayOneShot(checkpointsound,1F);
+		}
+		if (other.gameObject.tag == "Boost") 
+		{
+			//rb.AddForce ( Camera.main.transform.TransformDirection (new Vector3(0,0,2000))); //adding force with the direction of camera
+			rb.AddForce (new Vector3(2000,0,0));
+		}
+
+
+		if (other.gameObject.tag == "Dungeon2Key") {
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon2Key"));
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon2Gate"));
+
+		}
+
+		if (other.gameObject.tag == "Dungeon5Key") {
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon5Key"));
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon5Gate"));
+			
 		}
 	}
 	void OnCollisionEnter (Collision collisionInfo)
