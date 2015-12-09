@@ -13,6 +13,12 @@ TagManager:
   - Trap3
   - Music
   - Key
+  - Enemy
+  - Wall
+  - Dungeon2Gate
+  - Dungeon2Key
+  - Dungeon5Gate
+  - Dungeon5Key
   layers:
   - Default
   - TransparentFX
