@@ -5,6 +5,7 @@ public class Projectile : MonoBehaviour {
 	
 	public LayerMask collisionMask;
 	float speed = 10;
+	float damage = 1;
 	
 	public void SetSpeed(float newSpeed) {
 		speed = newSpeed;
@@ -14,33 +15,34 @@ public class Projectile : MonoBehaviour {
 		float moveDistance = speed * Time.deltaTime;
 		CheckCollisions (moveDistance);
 		transform.Translate (Vector3.forward * moveDistance);
-		Destroy (gameObject, 3.0F);
+		Destroy (this.gameObject, 3.0F);
 	}
+	
 	
 	void CheckCollisions(float moveDistance) {
 		Ray ray = new Ray (transform.position, transform.forward);
 		RaycastHit hit;
 		
-		if (Physics.Raycast (ray, out hit, moveDistance, collisionMask)) {
+		if (Physics.Raycast(ray, out hit, moveDistance, collisionMask)) {
 			OnHitObject(hit);
+			//Debug.Log("hit");
 		}
 	}
 	
 	void OnHitObject(RaycastHit hit) {
-		print (hit.collider.gameObject.name);
+		IDamagable damageableObject = hit.collider.GetComponent<IDamagable> ();
+
+			damageableObject.TakeHit(damage, hit);
+
 		GameObject.Destroy (gameObject);
 	}
-	
-	void OnTriggerEnter (Collider col) {
-		if (col.gameObject.tag == "Enemy") {
-			Destroy (col.gameObject);
-			Destroy (this.gameObject);
-		} else if (col.gameObject.tag == "Box") {
-			Destroy (col.gameObject);
-			Destroy (this.gameObject);
-		} else if (col.gameObject.tag == "Wall") {
-			Destroy (this.gameObject);
-		}
 
-	}
+	void OnTriggerEnter (Collider col) {
+		if (col.gameObject.tag == "Wall" || col.gameObject.tag == "Dungeon2Gate") 
+			Destroy (this.gameObject);
+
+	} 
+
+
+
 }

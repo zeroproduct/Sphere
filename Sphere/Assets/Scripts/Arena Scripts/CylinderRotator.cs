@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Rotator : MonoBehaviour {
+public class CylinderRotator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -10,6 +10,7 @@ public class Rotator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Rotate (new Vector3 (0, 0.4F, 0));
+		transform.Rotate (new Vector3 (0, -0.4F, 0));
+
 	}
 }

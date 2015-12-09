@@ -118,17 +118,36 @@ public class Paddle : MonoBehaviour {
 			rb.AddForce (new Vector3(2000,0,0));
 		}
 
+		///*** KEY AND DOOR TRIGGERS ***\\\
 
 		if (other.gameObject.tag == "Dungeon2Key") {
 			Destroy (GameObject.FindGameObjectWithTag("Dungeon2Key"));
 			Destroy (GameObject.FindGameObjectWithTag("Dungeon2Gate"));
+		}
 
+		if (other.gameObject.tag == "Dungeon4Key") {
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon4Key"));
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon4Gate"));
 		}
 
 		if (other.gameObject.tag == "Dungeon5Key") {
 			Destroy (GameObject.FindGameObjectWithTag("Dungeon5Key"));
 			Destroy (GameObject.FindGameObjectWithTag("Dungeon5Gate"));
-			
+		}
+
+		if (other.gameObject.tag == "Dungeon6Key") {
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon6Key"));
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon6Gate"));
+		}
+
+		if (other.gameObject.tag == "Dungeon7Key") {
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon7Key"));
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon7Gate"));
+		}
+
+		if (other.gameObject.tag == "Dungeon8Key") {
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon8Key"));
+			Destroy (GameObject.FindGameObjectWithTag("Dungeon8Gate"));
 		}
 	}
 	void OnCollisionEnter (Collision collisionInfo)

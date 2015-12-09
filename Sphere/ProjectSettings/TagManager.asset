@@ -19,6 +19,20 @@ TagManager:
   - Dungeon2Key
   - Dungeon5Gate
   - Dungeon5Key
+  - Dungeon3Gate
+  - Target
+  - Spawner1
+  - Dungeon4Key
+  - Dungeon4Gate
+  - Spawner2
+  - Shotgun
+  - Dungeon6Key
+  - Dungeon6Gate
+  - Dungeon7Key
+  - Dungeon7Gate
+  - UltimaGun
+  - Dungeon8Key
+  - Dungeon8Gate
   layers:
   - Default
   - TransparentFX
@@ -28,7 +42,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Enemy
   - 
   - 
   - 

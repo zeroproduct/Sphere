@@ -27,4 +27,18 @@ public class GunController : MonoBehaviour {
 			equiptedGun.Shoot();
 		}
 	}
+
+	public void OnTriggerEnter(Collider col){
+		if (col.gameObject.tag == "Shotgun") {
+			equiptedGun.gunType = 1;
+			equiptedGun.msBetweenShots = 700;
+			Destroy (col.gameObject);
+		}
+
+		if (col.gameObject.tag == "UltimaGun") {
+			equiptedGun.gunType = 2;
+			equiptedGun.msBetweenShots = 100;
+			Destroy (col.gameObject);
+		}
+	}
 }
