@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class TileScript : MonoBehaviour {
 
-	private float fallDelay = 1f;
+	private float fallDelay = 0.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +16,7 @@ public class TileScript : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collider other){
+	void OnTriggerExit(Collider other){
 		if (other.tag == "Player") {
 			TileGenerator.Instance.spawnTile();
 			StartCoroutine(fallDown());
@@ -27,7 +27,7 @@ public class TileScript : MonoBehaviour {
 	IEnumerator fallDown() {
 		yield return new WaitForSeconds (fallDelay);
 		GetComponent<Rigidbody> ().isKinematic = false;
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(1);
 		switch (gameObject.name) {
 
 		case "LeftTile":

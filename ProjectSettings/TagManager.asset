@@ -19,6 +19,7 @@ TagManager:
   - Dungeon2Key
   - Dungeon5Gate
   - Dungeon5Key
+<<<<<<< HEAD:ProjectSettings/TagManager.asset
   - Dungeon3Gate
   - Target
   - Spawner1
@@ -40,6 +41,8 @@ TagManager:
   - redthing
   - bigboss
   - Enemy2
+=======
+>>>>>>> parent of 77295cb... Endless Mode completion + bug fix:Sphere/ProjectSettings/TagManager.asset
   layers:
   - Default
   - TransparentFX
