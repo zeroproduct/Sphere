@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent (typeof(NavMeshAgent))]
-public class Enemy : LivingEntity {
+public class Boss : LivingEntity {
 
 	NavMeshAgent pathfinder;
 	Transform target;
@@ -16,7 +16,7 @@ public class Enemy : LivingEntity {
 	}
 	
 	void Update () {
-		
+
 	}
 	
 	IEnumerator UpdatePath() {
@@ -26,9 +26,9 @@ public class Enemy : LivingEntity {
 			Vector3 targetPosition = new Vector3(target.position.x,0,target.position.z);
 			if (!dead) {
 				pathfinder.SetDestination (targetPosition);
-
 			}
 			yield return new WaitForSeconds(refreshRate);
+
 		}
 	}
 }

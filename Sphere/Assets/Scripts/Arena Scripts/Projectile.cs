@@ -28,12 +28,12 @@ public class Projectile : MonoBehaviour {
 			//Debug.Log("hit");
 		}
 	}
-	
+
 	void OnHitObject(RaycastHit hit) {
 		IDamagable damageableObject = hit.collider.GetComponent<IDamagable> ();
-
+		if (damageableObject != null) {
 			damageableObject.TakeHit(damage, hit);
-
+		}
 		GameObject.Destroy (gameObject);
 	}
 

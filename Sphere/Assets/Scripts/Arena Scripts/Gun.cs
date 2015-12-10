@@ -7,7 +7,7 @@ public class Gun : MonoBehaviour {
 	public Projectile projectile;
 	public float msBetweenShots = 100;
 	public float muzzleVelocity = 35;
-	public int gunType = 1;
+	public int gunType = 0;
 	
 	float nextShotTime;
 	
