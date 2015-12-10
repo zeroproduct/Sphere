@@ -32,7 +32,7 @@ public class TileGenerator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		createTile (100);
+		createTile (50);
 
 		//create 50 tiles
 		for(int i=0; i<50; i++){
@@ -64,20 +64,26 @@ public class TileGenerator : MonoBehaviour {
 		if (leftTiles.Count == 0 || topTiles.Count == 0) {
 			createTile(10);
 		}
-		//generate random # between 0-1
-		int randomIndex = Random.Range (0, 2);
-		if (randomIndex == 0) {
+		//generate random number ( 1 or 2)
+		int randomNum = Random.Range (0, 2);
+
+		if (randomNum == 0) {
 			GameObject temp = leftTiles.Pop ();
 			temp.SetActive(true);
-			temp.transform.position = currentTile.transform.GetChild(0).transform.GetChild(randomIndex).position;
+			temp.transform.position = currentTile.transform.GetChild(0).transform.GetChild(randomNum).position;
 			currentTile = temp;
-		} else if(randomIndex==1) {
-			GameObject temp = leftTiles.Pop ();
+		} else if(randomNum== 1) {
+			GameObject temp = topTiles.Pop ();
 			temp.SetActive(true);
-			temp.transform.position = currentTile.transform.GetChild(0).transform.GetChild(randomIndex).position;
+			temp.transform.position = currentTile.transform.GetChild(0).transform.GetChild(randomNum).position;
 			currentTile = temp;		
 		}
 
-		currentTile= (GameObject)Instantiate(tilePrefabs[randomIndex], currentTile.transform.GetChild(0).transform.transform.GetChild(randomIndex).position, Quaternion.identity);
+		int spawnItem = Random.Range (0, 15);
+		if (spawnItem == 0) {
+			currentTile.transform.GetChild(1).gameObject.SetActive(true);
+		}
+
+		//currentTile= (GameObject)Instantiate(tilePrefabs[randomNum], currentTile.transform.GetChild(0).transform.transform.GetChild(randomNum).position, Quaternion.identity);
 	}
 }

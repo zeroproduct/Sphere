@@ -19,6 +19,7 @@ TagManager:
   - Dungeon2Key
   - Dungeon5Gate
   - Dungeon5Key
+  - Boost
   layers:
   - Default
   - TransparentFX
