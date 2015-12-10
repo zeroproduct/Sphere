@@ -114,8 +114,8 @@ public class Paddle : MonoBehaviour {
 		}
 		if (other.gameObject.tag == "Boost") 
 		{
-			//rb.AddForce ( Camera.main.transform.TransformDirection (new Vector3(0,0,2000))); //adding force with the direction of camera
-			rb.AddForce (new Vector3(2000,0,0));
+			//rb.AddForce ( Camera.main.transform.TransformDirection (new Vector3(0,0,20))); //adding force with the direction of camera
+			//rb.AddForce (new Vector3(2000,0,0));
 		}
 
 		///*** KEY AND DOOR TRIGGERS ***\\\

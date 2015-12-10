@@ -19,6 +19,7 @@ TagManager:
   - Dungeon2Key
   - Dungeon5Gate
   - Dungeon5Key
+<<<<<<< HEAD:Sphere/Sphere/ProjectSettings/TagManager.asset
   - Dungeon3Gate
   - Target
   - Spawner1
@@ -33,6 +34,9 @@ TagManager:
   - UltimaGun
   - Dungeon8Key
   - Dungeon8Gate
+=======
+  - Boost
+>>>>>>> refs/remotes/origin/Danny:Sphere/ProjectSettings/TagManager.asset
   layers:
   - Default
   - TransparentFX
